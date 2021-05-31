@@ -10,8 +10,8 @@ public class Practitioner {
     @Id
     public String practitionerId;
 
-    public String practitionerFname;
-    public String practitionerLname;
+    public String practitionerName;
+
 
 
 }

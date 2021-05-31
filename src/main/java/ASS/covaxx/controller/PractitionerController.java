@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 
 @Controller
+@CrossOrigin
 public class PractitionerController {
 
     @Autowired
@@ -63,13 +64,10 @@ public class PractitionerController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This practitionerId does not exist");
         }
 
-        if (changes.practitionerFname != null) {
-            existingPractitioner.practitionerFname = changes.practitionerFname;
+        if (changes.practitionerName != null) {
+            existingPractitioner.practitionerName = changes.practitionerName;
         }
 
-        if (changes.practitionerLname != null) {
-            existingPractitioner.practitionerLname = changes.practitionerLname;
-        }
 
         this.PractitionerRepo.save(existingPractitioner);
 

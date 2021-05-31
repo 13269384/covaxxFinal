@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 
 @Controller
+@CrossOrigin
 public class PatientController {
 
     @Autowired
