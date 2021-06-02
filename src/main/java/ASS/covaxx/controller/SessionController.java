@@ -106,12 +106,12 @@ public class SessionController {
 
     ) {
 
-        if (session.sessionId != null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New sessions should not specify any ID");
-
-        session.practiceID = practiceID;
-
-        validate(session);
+//        if (session.sessionId != null)
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New sessions should not specify any ID");
+//
+//        session.practiceID = practiceID;
+//
+//        validate(session);
 
         this.sessions.save(session);
         return session;

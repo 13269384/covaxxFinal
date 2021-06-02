@@ -41,13 +41,13 @@ public class PatientController {
     public @ResponseBody
     Patient createNew(@RequestBody Patient patient) {
 
-        if (patient.patientId == null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Patient must specify a patientId");
-
-        Patient existingPatient = this.PatientRepo.getById(patient.patientId);
-        if (existingPatient != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This patientId is already used");
-        }
+//        if (patient.patientId == null)
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Patient must specify a patientId");
+//
+//        Patient existingPatient = this.PatientRepo.getById(patient.patientId);
+//        if (existingPatient != null) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This patientId is already used");
+//        }
 
         this.PatientRepo.save(patient);
 
@@ -73,4 +73,39 @@ public class PatientController {
         return existingPatient;
 
     }
+//    @DeleteMapping("patients/{patientId}")
+//    public @ResponseBody
+//    Patient deleteExisting(@PathVariable String patientId, @RequestBody Patient changes){
+//        Patient deletingPatient = this.PatientRepo.getById(patientId);
+//        this.PatientRepo.save(deletingPatient);
+//        return deletingPatient;
+//    }
+//    @DeleteMapping("patients/{patientId}")
+//    public @ResponseBody deletePost(@PathVariable String patientId) {
+//
+//        var isRemoved = PatientRepo.delete(patientId);
+//
+//        if (!isRemoved) {
+//            return new ResponseStatusException<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        return new ResponseStatusException<>(patientId, HttpStatus.OK);
+//    }
+
+//    @DeleteMapping("patients/{patientId}")
+//    public String deleteById(@PathVariable String patientId) {
+//        return patientId;
+//    }
+//
+//    @DeleteMapping("/jpa/users/{username}/todos/{id}")
+//    public String deleteById(@PathVariable String patientId) {
+//
+//        Patient existingPatient = this.PatientRepo.getById(patientId);
+//        PatientRepo.deleteById(patientId);
+//
+//        return existingPatient.noContent().build();
+//    }
+
+
+
 }
