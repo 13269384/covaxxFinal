@@ -1,5 +1,6 @@
 package ASS.covaxx.controller;
 import ASS.covaxx.model.Practice;
+import ASS.covaxx.model.Practitioner;
 import ASS.covaxx.model.Session;
 import ASS.covaxx.repo.PracticeRepo;
 import ASS.covaxx.repo.PractitionerRepo;
@@ -25,18 +26,20 @@ public class SessionController {
     @Autowired
     private PractitionerRepo practitioners;
 
-    @GetMapping("/practices/{practiceID}/sessions")
-    private @ResponseBody
-    Collection<Session> getSessions(
-            @PathVariable String practiceID
-    ) {
-        Practice practice = this.practices.getById(practiceID);
-
-        if (practice == null)
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no practice with this practiceId");
-
-        return sessions.find(practiceID, null, null);
+    @GetMapping("/sessions")
+    private @ResponseBody Collection<Session> getAll(){
+        return this.sessions.getAll();
     }
+
+//            @PathVariable String practiceID
+//    ) {
+//        Practice practice = this.practices.getById(practiceID);
+//
+//        if (practice == null)
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no practice with this practiceId");
+//
+//        return sessions.find(practiceID, null, null);
+//    }
 
 
     @GetMapping("/sessions/{sessionId}")
@@ -95,7 +98,7 @@ public class SessionController {
 
 
 
-    @PostMapping("/practices/{practiceID}/sessions")
+    @PostMapping("/sessions")
     private @ResponseBody
     Session createSession(
             @PathVariable String practiceID,

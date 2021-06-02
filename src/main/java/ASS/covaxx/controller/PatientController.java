@@ -19,10 +19,9 @@ public class PatientController {
     private PatientRepo PatientRepo;
 
     @GetMapping("/patients")
-    public @ResponseBody Collection<Patient> getAll(
-            @RequestParam(required = false) String patientName) {
+    public @ResponseBody Collection<Patient> getAll() {
 
-        return this.PatientRepo.find(patientName);
+        return this.PatientRepo.getAll();
     }
 
     @GetMapping("/patients/{patientsId}")
